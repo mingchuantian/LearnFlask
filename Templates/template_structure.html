@@ -1,0 +1,48 @@
+<!--Control Structure-->
+{% if user %}
+	Hello,{{user}}!
+{% else %}
+	Hello, Stranger!
+{% end if %}
+
+<!---Render a list of elements-->
+<ul>
+	{% for comment in comments %}
+		<li>{{ comment }} </li>
+	{% endfor %}
+</ul>
+
+<!---Make use of micro, they are stored in a standalone files-->
+{% import 'macros.html' as macros %}
+<ul>
+	{% for comment in comments %}
+		{{ macros.render_comment(comment) }}
+	{% endfor %}
+</ul>
+
+<!---Template inheritance(reuse templates more easily): First, a base template is created with the name base.html-->
+<html>
+<head>
+	{% block head %}
+	<title>{% block title %}{% endblock %} - My App</title>
+	{% endblock %}
+</head>
+<body>
+	{% block body %}
+	{% endblock %}
+</body>
+</html>
+<!---The above base templates define blocks that can be overridden by derived templates (note title is contained by head)-->
+
+<!---Now extend the above template-->
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+	{{ super() }}
+	<style></style>
+{% endblock %}
+{% block body%}
+<h1>Hello, World!</h1>
+{% endblock %}
+<!---super() refer to the contents of the block in the base template
+

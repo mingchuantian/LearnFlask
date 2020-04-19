@@ -1,0 +1,13 @@
+<p>A value from a dictionary: {{mydict['key']}}</p>
+<p>A value from a list: {{mylist[3]}}</p>
+<p>A value form an object's method: {{myobj.somemethod()}}</p>
+
+
+<h1>Hello, {{name|capitalize}}</h1>
+
+<!---The filters can change vairables--!>
+<!---safe: no escaping 	capitalize    lower:to lower case     upper:to upper case       title:capitalize each word in the value       trim:remove leading and tailing whitespace from the value     striptags:removes HTML from value before rendering--!>
+
+
+<!---Safe automatically renders <h1>Hello</h1> as &lt;h1&gt;Hello... -->
+
