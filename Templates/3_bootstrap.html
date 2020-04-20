@@ -1,0 +1,26 @@
+<!--Once bootstrap is initialized in .py file, a base template that includes all Bootstrap files is available to the application. -->
+{% extends "bootstrap/base.html %}
+{% block title %}Flasky{% endblock %}
+
+{% block navbar %} <!--reserved for navbar-->
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			...
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %} <!--reserved for page content-->
+<div class="container">
+	...
+</div>
+{% endblock %}
+<!---Other template blocks-->
+<!-- html, head, title, metas, styles, body_attribus,body, navbar, content, scripts..-->
+<!-- !!!!Remember to add super() because some blocks are used by Flask-bootstrap itsefl! eg. styles and scripts.-->
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="myscripts.js"></script>
+{% endblock %}
